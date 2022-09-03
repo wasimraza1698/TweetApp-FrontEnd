@@ -1,0 +1,42 @@
+.navbar {
+    background-color: rgba(29, 160, 242, 0.841);;
+}
+
+.navbar-brand :hover {
+    opacity: 0.8;
+}
+
+.search-result {
+    width: 400px;
+}
+
+.user-info {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-data-section {
+    background-color: white;
+    border-radius: 25px;
+    color: black;
+}
+
+.user-data-section:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.profile-pic-section:hover {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profile-result {
+    width: 250px;
+}
+
+.profile-result-row {
+    display: inline;
+}

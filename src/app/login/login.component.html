@@ -1,0 +1,74 @@
+<div class="container-fluid border rounded-3">
+  <div class="row">
+    <div class="col login-left-pane">
+      <svg id="twitter-logo-large" viewBox="328 355 335 276" xmlns="http://www.w3.org/2000/svg">
+        <path d="
+          M 630, 425
+          A 195, 195 0 0 1 331, 600
+          A 142, 142 0 0 0 428, 570
+          A  70,  70 0 0 1 370, 523
+          A  70,  70 0 0 0 401, 521
+          A  70,  70 0 0 1 344, 455
+          A  70,  70 0 0 0 372, 460
+          A  70,  70 0 0 1 354, 370
+          A 195, 195 0 0 0 495, 442
+          A  67,  67 0 0 1 611, 380
+          A 117, 117 0 0 0 654, 363
+          A  65,  65 0 0 1 623, 401
+          A 117, 117 0 0 0 662, 390
+          A  65,  65 0 0 1 630, 425
+          Z"
+          style="fill:#fff;"/>
+      </svg>
+    </div>
+    <div class="col px-0 login-right-pane">
+      <p class="mb-5 mt-4 pb-3 text-center display-4">Welcome to TweetApp</p>
+      <div class="login-form">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmitLogin()">
+          <div class="row px-5 pt-3">
+            <div class="col">
+              <label for="username" class="mb-0">Email or Username</label>
+            </div>
+          </div>
+          <div class="row pt-0 px-5">
+            <div class="col">
+              <input type="text" formControlName="username" class="form-control" placeholder="Email or Username">
+              <div *ngIf="submitted && form.username.errors" class="error">
+                <div *ngIf="form.username.errors.required">Email/Username is required</div>
+              </div>
+            </div> 
+          </div>
+          <div class="row px-5 pt-2">
+            <div class="col">
+              <label for="password" class="mb-0">Password</label>
+            </div>
+          </div>
+          <div class="row pb-2 px-5">
+            <div class="col">
+              <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Password">
+              <!-- <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-eye" (click)="toggleShow()"></i>
+                </span>
+              </div> -->
+              <div *ngIf="submitted && form.password.errors" class="error">
+                <div *ngIf="form.password.errors.required">Password is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row text-center pt-2 px-5">
+            <div class="col">
+              <input name="login" id="login" class="btn btn-outline-light btn-block" type="submit" value="Login">
+            </div>
+          </div>
+        </form>
+        <div class="px-5 pt-2">
+          <app-forgot-password></app-forgot-password>
+        </div>
+      <div class="px-5 pt-2">
+        <app-register></app-register>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+@media screen and (max-width: 1150px) {
+    .display-4{
+        font-size:25px;
+    }
+  }
+
+@media screen and (max-width: 700px) {
+    .display-4{
+        font-size:20px;
+    }
+  }
+
+.modal {
+    color: #000;
+}
+
+.modal .error {
+    color: red;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.login-btn {
+  padding: 13px 20px 12px;
+  background-color: #000;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.login-btn:hover {
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+}
