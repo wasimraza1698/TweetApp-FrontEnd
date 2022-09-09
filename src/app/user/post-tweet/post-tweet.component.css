@@ -1,0 +1,14 @@
+.btn {
+    background-color: rgba(29, 160, 242, 0.841);
+    color: white;
+}
+
+.btn:hover {
+    border-color: rgba(29, 160, 242, 0.841);
+    background-color: white;
+    color: black;
+}
+
+textarea {
+    resize: none;
+}

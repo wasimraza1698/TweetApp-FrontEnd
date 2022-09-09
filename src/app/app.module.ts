@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormsModule} from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { TweetAppService } from './Services/tweet-app.service';
 
@@ -16,6 +19,9 @@ import { ForgotPasswordComponent } from './login/forgot-password/forgot-password
 import { HomeComponent } from './user/home/home.component';
 import { PostTweetComponent } from './user/post-tweet/post-tweet.component';
 import { ViewTweetComponent } from './user/view-tweet/view-tweet.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewTweetsComponent } from './user/view-tweets/view-tweets.component';
+import { TrendingComponent } from './user/trending/trending.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,9 @@ import { ViewTweetComponent } from './user/view-tweet/view-tweet.component';
     ForgotPasswordComponent,
     HomeComponent,
     PostTweetComponent,
-    ViewTweetComponent
+    ViewTweetComponent,
+    ViewTweetsComponent,
+    TrendingComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,11 @@ import { ViewTweetComponent } from './user/view-tweet/view-tweet.component';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [TweetAppService],
   bootstrap: [AppComponent]

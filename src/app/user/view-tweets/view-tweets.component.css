@@ -1,0 +1,15 @@
+.comment:hover{
+    color: rgba(29, 160, 242, 0.841);;
+}
+
+.like:hover{
+    color: tomato;
+}
+
+.edit:hover{
+    color:green;
+}
+
+.delete:hover{
+    color:red;
+}
