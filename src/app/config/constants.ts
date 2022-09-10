@@ -8,4 +8,5 @@ export class Constants {
     public static readonly LOGIN_ENDPOINT: string =  'login';
     public static readonly RESET_PASSWORD_ENDPOINT = 'reset-password';
     public static readonly REGISTER_ENDPOINT = 'register';
+    public static readonly SEARCH_USER = 'search/';
 }

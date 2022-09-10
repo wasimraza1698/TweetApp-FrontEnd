@@ -34,4 +34,9 @@ export class TweetAppService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset = utf-8');
     return this.http.post<string>(this.baseurl + Constants.REGISTER_ENDPOINT, userRequest, {headers, responseType: 'text' as 'json'});
   }
+
+  public search(key : string): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset = utf-8');
+    return this.http.get<any>(this.baseurl + Constants.SEARCH_USER + key, { headers, responseType: 'json'});
+  }
 }

@@ -1,0 +1,7 @@
+.user:hover{
+    background-color: aliceblue;
+}
+
+.user {
+    border-top: 1px solid grey;
+}

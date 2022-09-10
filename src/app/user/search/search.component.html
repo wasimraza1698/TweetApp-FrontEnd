@@ -1,0 +1,7 @@
+<div class="dropdown">
+    <input class="form-control dropdown-toggle" type="text" placeholder="Search TweetApp" data-toggle="dropdown" (keyup)="Search(key)" #key>
+    <div class="dropdown-menu dropdown-menu-right search-result">
+        <p class="dropdown-header">Try searching for people</p>
+        <app-user *ngFor="let user of users" [user]="user"></app-user>
+    </div>
+</div>
