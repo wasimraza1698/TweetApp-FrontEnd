@@ -24,36 +24,15 @@ export class HomeComponent implements OnInit {
   list: User[];
   count: number;
   uname: string;
-  width: any;
-  displayFullProfile : boolean;
 
   constructor(private formbuilder: FormBuilder, private tweetAppService: TweetAppService, private route: Router) {
     this.Profiles();
   }
 
   ngOnInit(): void {
-    this.width = window.innerWidth;
-    if (this.width <= 1450) {
-      this.displayFullProfile = false;
-    }
-    else {
-      this.displayFullProfile = true;
-    }
-
     this.form = this.formbuilder.group({
       username: ['']
     })
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.width = window.innerWidth;
-    if (this.width <= 1450) {
-      this.displayFullProfile = false;
-    }
-    else {
-      this.displayFullProfile = true;
-    }
   }
 
   Profiles() {

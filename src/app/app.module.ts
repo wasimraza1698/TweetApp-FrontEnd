@@ -25,6 +25,8 @@ import { TrendingComponent } from './user/trending/trending.component';
 import { UserComponent } from './user/user/user.component';
 import { SearchComponent } from './user/search/search.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { NavigationComponent } from './user/navigation/navigation.component';
+import { AllUsersComponent } from './user/all-users/all-users.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { ProfileComponent } from './user/profile/profile.component';
     TrendingComponent,
     UserComponent,
     SearchComponent,
-    ProfileComponent
+    ProfileComponent,
+    NavigationComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,
