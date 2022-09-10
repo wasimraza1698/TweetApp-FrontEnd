@@ -65,4 +65,9 @@ export class NavigationComponent implements OnInit {
     var userName = localStorage.getItem('username');
     this.router.navigateByUrl('profile/'+userName);
   }
+
+  Logout(){
+    localStorage.clear();
+    this.router.navigateByUrl('login');
+  }
 }
