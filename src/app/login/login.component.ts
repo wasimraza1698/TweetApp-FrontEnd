@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.token = response;
         this.message = this.token.message;
         localStorage.setItem('jwToken', this.token.jwToken);
-        localStorage.setItem('username', username);
+        localStorage.setItem('username', this.token.userName);
         alert(this.message);
         console.log(this.message);
         this.route.navigateByUrl('home');

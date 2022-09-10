@@ -5,12 +5,14 @@ import { HomeComponent } from './user/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ViewTweetComponent } from './user/view-tweet/view-tweet.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { AllUsersComponent } from './user/all-users/all-users.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'view-tweet', component: ViewTweetComponent },
     { path: 'profile/:userName', component: ProfileComponent},
+    { path: 'all-users', component:AllUsersComponent},
     { path:'', redirectTo:'login', pathMatch:'full' }
   ];
   
