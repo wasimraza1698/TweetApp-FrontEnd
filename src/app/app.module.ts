@@ -22,6 +22,9 @@ import { ViewTweetComponent } from './user/view-tweet/view-tweet.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewTweetsComponent } from './user/view-tweets/view-tweets.component';
 import { TrendingComponent } from './user/trending/trending.component';
+import { UserComponent } from './user/user/user.component';
+import { SearchComponent } from './user/search/search.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { TrendingComponent } from './user/trending/trending.component';
     PostTweetComponent,
     ViewTweetComponent,
     ViewTweetsComponent,
-    TrendingComponent
+    TrendingComponent,
+    UserComponent,
+    SearchComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

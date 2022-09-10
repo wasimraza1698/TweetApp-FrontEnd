@@ -1,0 +1,9 @@
+<div type="button" class="user row mx-2 py-2" (click)="GoToProfile(user.userName)">
+    <div class="col-2">
+        <img src="../../../assets/images/twitter_login_page.png" class="rounded-circle" width="40" height="40">
+    </div>
+    <div class="col-10">
+        <div class="row">{{user.firstName + " " + user.lastName}}</div>
+        <div class="row">@{{user.userName}}</div>
+    </div>
+</div>
