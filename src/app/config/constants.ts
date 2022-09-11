@@ -9,4 +9,5 @@ export class Constants {
     public static readonly RESET_PASSWORD_ENDPOINT = 'reset-password';
     public static readonly REGISTER_ENDPOINT = 'register';
     public static readonly SEARCH_USER = 'search/';
+    public static readonly POST_TWEET = '/add';
 }
