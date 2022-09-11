@@ -27,6 +27,7 @@ import { SearchComponent } from './user/search/search.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { NavigationComponent } from './user/navigation/navigation.component';
 import { AllUsersComponent } from './user/all-users/all-users.component';
+import { ReplyComponent } from './user/reply/reply.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AllUsersComponent } from './user/all-users/all-users.component';
     SearchComponent,
     ProfileComponent,
     NavigationComponent,
-    AllUsersComponent
+    AllUsersComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { TweetRequest } from 'src/app/Models/tweet-request';
 import { TweetAppService } from 'src/app/Services/tweet-app.service';
 

@@ -11,7 +11,7 @@
             <div *ngIf="isPosted && form.tweetText.errors" class="error ml-2 text-danger">
                 <div *ngIf="form.tweetText.errors.required">Tweet text is required to post tweet.</div>
             </div>
-            <input formControlName="tweetTag" type="text" class="form-control m-2 p-2 border-dark bg-light" placeholder="Enter Tweet Tag">
+            <input formControlName="tweetTag" type="text" class="form-control m-2 p-2 border-dark bg-light" placeholder="Tweet Tag" maxlength="50">
             <button class="btn ml-2">Post Tweet</button>
         </form>
     </mat-card-content>

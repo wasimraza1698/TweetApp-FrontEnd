@@ -1,4 +1,4 @@
-<mat-card type="button" class="my-2 bg-light" *ngFor="let tweet of tweets" (click)="GoToTweet(tweet.tweetId)">
+<mat-card type="button" class="my-2 bg-light" *ngFor="let tweet of tweets">
     <mat-card-header (click)="GoToProfile(tweet.tweetedByUser.userName)" class="user pt-4 pl-4">
       <img
         src="../../../assets/images/twitter_login_page.png"
@@ -8,14 +8,14 @@
         @{{tweet.tweetedByUser.userName}} , {{ConvertTime(tweet.tweetedAt)}}
       </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content class="pt-3 pl-4">
+    <mat-card-content class="pt-3 pl-4" (click)="GoToTweet(tweet.tweetId)">
       <p>
         {{tweet.tweetText}}
       </p>
       <p class="text-primary">{{tweet.tweetTag}}</p>
     </mat-card-content>
     <mat-card-actions class="actions ml-3">
-      <button class="btn comment"><i class='far fa-comment'></i><span class="px-1">{{tweet.repliesCount}}</span></button>
+      <app-reply [repliesCount]="tweet.repliesCount" [tweetId]="tweet.tweetId" ></app-reply>
       <button class="btn like" (click)="LikeTweet(tweet.tweetId)"><i class='far fa-heart'></i><span class="px-1">{{tweet.tweetLikesCount}}</span></button>
       <button class="btn edit"><i class='far fa-edit'></i><span class="px-1">Edit</span></button>
       <button class="btn delete"><i class='fa fa-trash'></i><span class="px-1">Delete</span></button>
