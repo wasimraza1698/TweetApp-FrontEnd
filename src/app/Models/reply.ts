@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Reply {
     replyId: string;
     replyText: string;
@@ -5,5 +7,6 @@ export interface Reply {
     replyLikesCount: number;
     replyLiked: boolean;
     repliedBy: string;
+    repliedByUser: User;
     repliedAt: Date;
 }

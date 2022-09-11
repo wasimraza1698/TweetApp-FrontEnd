@@ -13,3 +13,11 @@
 .delete:hover{
     color:red;
 }
+
+.user{
+    background-color: rgba(94, 94, 94, 0.056);
+}
+
+.user:hover{
+    background-color: aliceblue;
+}

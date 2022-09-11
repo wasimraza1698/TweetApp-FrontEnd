@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TweetRequest } from 'src/app/Models/tweet-request';
 import { TweetAppService } from 'src/app/Services/tweet-app.service';
 
@@ -47,7 +48,7 @@ export class PostTweetComponent implements OnInit {
           this.message = response;
           console.log(this.message);
           alert(this.message);
-          this.Reset();
+          window.location.reload();
         },
         error: (error : HttpErrorResponse) => {
           this.message = error.error;

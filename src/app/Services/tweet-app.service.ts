@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { Token } from '../Models/token';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { ResetPasswordRequest } from '../Models/reset-password-request';
 import { Constants } from '../config/constants';
 import { UserRequest } from '../Models/user-request';
@@ -48,5 +47,10 @@ export class TweetAppService {
     let username = localStorage.getItem('username');
     const headers = requestHeaders.headersWithToken;
     return this.http.post<string>(this.baseurl + username + Constants.POST_TWEET, tweet, {headers, responseType: 'text' as 'json'});
+  }
+
+  public getAllTweets(): Observable<any>{
+    const headers = requestHeaders.header;
+    return this.http.get(this.baseurl + Constants.GET_ALL_TWEEETS, {headers, responseType: 'json'});
   }
 }

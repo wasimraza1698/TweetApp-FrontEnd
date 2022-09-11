@@ -1,22 +1,22 @@
-<mat-card type="button" class="my-2 bg-light" *ngFor="let a of [1,2,3,4,5]">
-    <mat-card-header>
+<mat-card type="button" class="my-2 bg-light" *ngFor="let tweet of tweets" (click)="GoToTweet(tweet.tweetId)">
+    <mat-card-header (click)="GoToProfile(tweet.tweetedByUser.userName)" class="user pt-4 pl-4">
       <img
-        src="https://www.freakyjolly.com/wp-content/uploads/2021/07/cropped-cropped-fj-logo-192-removebg-preview-e1625997712615-1.png"
-        mat-card-avatar />
-      <mat-card-title>Wasim Raza</mat-card-title>
+        src="../../../assets/images/twitter_login_page.png"
+        mat-card-avatar>
+      <mat-card-title>{{tweet.tweetedByUser.firstName + " " + tweet.tweetedByUser.lastName}}</mat-card-title>
       <mat-card-subtitle>
-        @wasim__lm30
+        @{{tweet.tweetedByUser.userName}} , {{ConvertTime(tweet.tweetedAt)}}
       </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="pt-3 pl-4">
       <p>
-        Manchester is blue. So is TweetApp!!!
+        {{tweet.tweetText}}
       </p>
-      <p class="text-primary">#cityzen</p>
+      <p class="text-primary">{{tweet.tweetTag}}</p>
     </mat-card-content>
     <mat-card-actions class="actions ml-3">
-      <button class="btn comment"><i class='far fa-comment'></i><span class="px-1">20</span></button>
-      <button class="btn like"><i class='far fa-heart'></i><span class="px-1">20</span></button>
+      <button class="btn comment"><i class='far fa-comment'></i><span class="px-1">{{tweet.repliesCount}}</span></button>
+      <button class="btn like" (click)="LikeTweet(tweet.tweetId)"><i class='far fa-heart'></i><span class="px-1">{{tweet.tweetLikesCount}}</span></button>
       <button class="btn edit"><i class='far fa-edit'></i><span class="px-1">Edit</span></button>
       <button class="btn delete"><i class='fa fa-trash'></i><span class="px-1">Delete</span></button>
     </mat-card-actions>

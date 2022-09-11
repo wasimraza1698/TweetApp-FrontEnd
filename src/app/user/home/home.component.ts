@@ -1,9 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Tweet } from 'src/app/Models/tweet';
-import { User } from 'src/app/Models/user';
 import { TweetAppService } from 'src/app/Services/tweet-app.service';
 
 @Component({
@@ -13,78 +10,28 @@ import { TweetAppService } from 'src/app/Services/tweet-app.service';
 })
 
 export class HomeComponent implements OnInit {
-  user: User;
-  form: FormGroup;
-  id: number;
-  tweet: Tweet;
-  username: string;
-  clickedMoreButton: { [key: number]: boolean } = {};
-  submitted = false;
+  tweets: Array<Tweet>;
   message: string;
-  list: User[];
-  count: number;
-  uname: string;
 
-  constructor(private formbuilder: FormBuilder, private tweetAppService: TweetAppService, private route: Router) {
-    this.Profiles();
+  constructor(private tweetAppService: TweetAppService) {
+    
   }
 
   ngOnInit(): void {
-    this.form = this.formbuilder.group({
-      username: ['']
+    this.GetAllTweets()
+  }
+
+  GetAllTweets(){
+    this.tweetAppService.getAllTweets().subscribe({
+      next: response => {
+        this.tweets = response;
+        console.log('tweets retrieved');
+      },
+      error: (error : HttpErrorResponse) => {
+        this.message = error.error;
+        alert(this.message);
+        console.log(this.message);
+      }
     })
-  }
-
-  Profiles() {
-    this.username = String(localStorage.getItem('username') || '{}');
-    // this.tweetAppService.GetUserProfile(this.username).subscribe({
-    //   next: response => {
-    //   this.user = response;
-    //   console.log(this.user);
-    //   },
-    //   error: (error: HttpErrorResponse) => {
-    //     console.log(error);
-    //   }
-    // });
-    // this.tweetAppService.GetAllUsers().subscribe({
-    //   next: response => {
-    //   this.list = response;
-    //   console.log(this.list);
-    // },
-    // error: (error: HttpErrorResponse) => {
-    //   console.log(error)
-    // }
-    // });
-  }
-
-  Search() {
-    this.uname = this.form.value["username"]
-    localStorage.setItem("uname", this.uname);
-    this.route.navigateByUrl('/SEARCH TWEET');
-
-  }
-
-  SearchUser(item: User) {
-    localStorage.setItem("uname", item.userName);
-    this.route.navigateByUrl('/SEARCH TWEET');
-  }
-  
-  isReplyClicked(index: number) {
-    console.log(index);
-    if (this.clickedMoreButton[index] == false) {
-      this.clickedMoreButton[index] = true;
-    }
-    else
-      this.clickedMoreButton[index] = false;
-  }
-
-  logout() {
-    localStorage.clear();
-  }
-
-  onReset() {
-    this.submitted = false;
-    this.form.reset();
-    this.Profiles();
   }
 }
