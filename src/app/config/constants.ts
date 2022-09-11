@@ -10,4 +10,5 @@ export class Constants {
     public static readonly REGISTER_ENDPOINT = 'register';
     public static readonly SEARCH_USER = 'search/';
     public static readonly POST_TWEET = '/add';
+    public static readonly GET_ALL_TWEEETS = 'all';
 }
