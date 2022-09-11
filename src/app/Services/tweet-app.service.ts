@@ -5,6 +5,7 @@ import { ResetPasswordRequest } from '../Models/reset-password-request';
 import { Constants } from '../config/constants';
 import { UserRequest } from '../Models/user-request';
 import { TweetRequest } from '../Models/tweet-request';
+import { ReplyRequest } from '../Models/reply-request';
 
 const requestHeaders = {
   header: new HttpHeaders({
@@ -52,5 +53,11 @@ export class TweetAppService {
   public getAllTweets(): Observable<any>{
     const headers = requestHeaders.header;
     return this.http.get(this.baseurl + Constants.GET_ALL_TWEEETS, {headers, responseType: 'json'});
+  }
+
+  public reply(tweetId: string, reply: ReplyRequest): Observable<string> {
+    let username = localStorage.getItem('username');
+    const headers = requestHeaders.headersWithToken;
+    return this.http.post<string>(this.baseurl + username + Constants.REPLY_TO_TWEET + tweetId, reply, {headers, responseType: 'text' as 'json'});
   }
 }

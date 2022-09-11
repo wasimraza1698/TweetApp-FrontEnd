@@ -1,0 +1,24 @@
+<button class="btn reply" data-toggle="modal" data-target="#reply"><i class='far fa-comment'></i><span class="px-1">{{repliesCount}}</span></button>
+<div class="modal" id="reply" [hidden]="hidden">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Reply to tweet: {{tweetId}}</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <form class="form-group" [formGroup]="replyFormGroup" (ngSubmit)="ReplyToTweet(tweetId)">
+            <div class="modal-body">
+                <textarea formControlName="replyText" class="form-control-plaintext m-2 p-2" [ngClass]="{'border-danger' : replyEmpty}" rows="4" placeholder="Reply text..." maxlength="144"></textarea>
+                <div *ngIf="replied && form.replyText.errors" class="error ml-2 text-danger">
+                    <div *ngIf="form.replyText.errors.required">Reply text is required.</div>
+                </div>
+                <input formControlName="replyTag" type="text" class="form-control m-2 p-2 border-dark bg-light" placeholder="Reply Tag" maxlength="50">
+            </div>
+            <div class="modal-footer">
+                <button class="btn reply-btn">Reply</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>

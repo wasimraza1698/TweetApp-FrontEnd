@@ -1,0 +1,19 @@
+.reply:hover{
+    color: rgba(29, 160, 242, 0.841);;
+}
+
+textarea {
+    resize: none;
+    background-color: rgba(94, 94, 94, 0.056);
+}
+
+.reply-btn {
+    background-color: rgba(29, 160, 242, 0.841);
+    color: white;
+}
+
+.reply-btn:hover {
+    border-color: rgba(29, 160, 242, 0.841);
+    background-color: white;
+    color: black;
+}
