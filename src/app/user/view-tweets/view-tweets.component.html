@@ -16,7 +16,7 @@
     </mat-card-content>
     <mat-card-actions class="actions ml-3">
       <app-reply [repliesCount]="tweet.repliesCount" [tweetId]="tweet.tweetId" ></app-reply>
-      <button class="btn like" (click)="LikeTweet(tweet.tweetId)"><i class='far fa-heart'></i><span class="px-1">{{tweet.tweetLikesCount}}</span></button>
+      <app-like-tweet [tweetId]="tweet.tweetId" [likesCount]="tweet.tweetLikesCount" [tweetLikedBy]="tweet.tweetLikedBy"></app-like-tweet>
       <button class="btn edit"><i class='far fa-edit'></i><span class="px-1">Edit</span></button>
       <button class="btn delete"><i class='fa fa-trash'></i><span class="px-1">Delete</span></button>
     </mat-card-actions>

@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tweet } from 'src/app/Models/tweet';
@@ -23,11 +22,7 @@ export class ViewTweetsComponent implements OnInit {
   GoToTweet(tweetId:string){
     this.router.navigateByUrl('view-tweet/'+tweetId);
   }
-
-  LikeTweet(userId:string){
-
-  }
-
+  
   ConvertTime(time: Date){
     time = time
     let timeInString = time.toString()

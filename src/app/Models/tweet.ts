@@ -7,7 +7,6 @@ export interface Tweet {
     tweetLikesCount: number;
     tweetLikedBy: Array<string>;
     tweetTag: string;
-    tweetLiked: boolean;
     tweetedBy: string;
     tweetedByUser: User;
     tweetedAt: Date;

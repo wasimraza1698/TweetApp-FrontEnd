@@ -1,10 +1,10 @@
-<button class="btn reply" data-toggle="modal" data-target="#reply"><i class='far fa-comment'></i><span class="px-1">{{repliesCount}}</span></button>
-<div class="modal" id="reply" [hidden]="hidden">
+<button class="btn reply" data-toggle="modal" data-target="#reply" (click)="showDialog=true"><i class='far fa-comment'></i><span class="px-1">{{repliesCount}}</span></button>
+<div *ngIf="showDialog" class="modal" id="reply" [hidden]="hidden">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">Reply to tweet: {{tweetId}}</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" (click)="showDialog=false">&times;</button>
         </div>
         
         <form class="form-group" [formGroup]="replyFormGroup" (ngSubmit)="ReplyToTweet(tweetId)">
