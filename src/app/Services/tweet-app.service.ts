@@ -60,4 +60,10 @@ export class TweetAppService {
     const headers = requestHeaders.headersWithToken;
     return this.http.post<string>(this.baseurl + username + Constants.REPLY_TO_TWEET + tweetId, reply, {headers, responseType: 'text' as 'json'});
   }
+
+  public like(tweetId:string): Observable<any> {
+    let username = localStorage.getItem('username');
+    const headers = requestHeaders.headersWithToken;
+    return this.http.put<any>(this.baseurl + username + Constants.LIKE_TWEET + tweetId, null, {headers, responseType: 'json'});
+  }
 }

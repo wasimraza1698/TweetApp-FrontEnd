@@ -4,7 +4,7 @@
 <div class="row px-5 pt-3 mx-0">
     <div class="col-8">
         <app-post-tweet></app-post-tweet>
-        <app-view-tweets [tweets]="tweets"></app-view-tweets>
+        <app-view-tweets *ngIf="tweets" [tweets]="tweets"></app-view-tweets>
     </div>
     <div class="col-4 trending">
         <app-trending></app-trending>

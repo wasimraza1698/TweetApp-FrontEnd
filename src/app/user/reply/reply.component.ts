@@ -13,12 +13,12 @@ import { TweetAppService } from 'src/app/Services/tweet-app.service';
 export class ReplyComponent implements OnInit {
   @Input() tweetId: string;
   @Input() repliesCount: number;
-  datatarget:string;
   replyFormGroup: FormGroup;
   replied: boolean;
   replyEmpty:boolean;
   message:string;
   hidden:boolean;
+  showDialog:boolean;
 
   constructor(private formBuilder:FormBuilder, private tweetAppService: TweetAppService) { }
 
@@ -27,8 +27,6 @@ export class ReplyComponent implements OnInit {
       replyText : ['', Validators.required],
       replyTag: ['']
     });
-
-    this.datatarget = "#" + this.tweetId;
 
     this.replied = false;
     this.replyEmpty = false;
@@ -41,6 +39,7 @@ export class ReplyComponent implements OnInit {
       this.replyEmpty = true;
     }
     else{
+      this.showDialog = false;
       this.hidden = true;
       let reply = new ReplyRequest();
       reply.replyText = this.replyFormGroup.value['replyText'];

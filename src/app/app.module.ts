@@ -28,6 +28,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { NavigationComponent } from './user/navigation/navigation.component';
 import { AllUsersComponent } from './user/all-users/all-users.component';
 import { ReplyComponent } from './user/reply/reply.component';
+import { LikeTweetComponent } from './user/like-tweet/like-tweet.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ReplyComponent } from './user/reply/reply.component';
     ProfileComponent,
     NavigationComponent,
     AllUsersComponent,
-    ReplyComponent
+    ReplyComponent,
+    LikeTweetComponent
   ],
   imports: [
     BrowserModule,

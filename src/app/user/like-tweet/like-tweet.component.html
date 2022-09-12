@@ -1,0 +1,2 @@
+<button *ngIf="!tweetLiked" class="btn like" (click)="LikeTweet(tweetId)" title="Like"><i class='far fa-heart'></i><span class="px-1">{{likesCount}}</span></button>
+<button *ngIf="tweetLiked" class="btn like" (click)="LikeTweet(tweetId)" title="Unlike"><i class='fa fa-solid fa-heart unlike'></i><span class="px-1">{{likesCount}}</span></button>
