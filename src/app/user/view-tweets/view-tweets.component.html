@@ -8,16 +8,29 @@
         @{{tweet.tweetedByUser.userName}} , {{ConvertTime(tweet.tweetedAt)}}
       </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content class="pt-3 pl-4" (click)="GoToTweet(tweet.tweetId)">
+    <mat-card-content *ngIf="!IsInEditMode(tweet.tweetId)" class="pt-3 pl-4" (click)="GoToTweet(tweet.tweetId)">
       <p>
         {{tweet.tweetText}}
       </p>
       <p class="text-primary">{{tweet.tweetTag}}</p>
     </mat-card-content>
-    <mat-card-actions class="actions ml-3">
+    <form class="form-group" [formGroup]="editFormGroup" (ngSubmit)="EditTweet(tweet.tweetId)">
+      <mat-card-content *ngIf="IsInEditMode(tweet.tweetId)" class="pt-3 pl-4">
+        <textarea formControlName="tweetText" class="form-control-plaintext m-2 p-2" [ngClass]="{'border-danger' : tweetEmpty}" rows="3" maxlength="144"></textarea>
+        <div *ngIf="isEdited && form.tweetText.errors" class="error ml-2 text-danger">
+            <div *ngIf="form.tweetText.errors.required">Tweet text is required to edit tweet.</div>
+        </div>
+        <input formControlName="tweetTag" type="text" class="form-control m-2 p-2 border-dark bg-light" [value]="tweet.tweetTag" maxlength="50">
+      </mat-card-content>
+      <mat-card-actions *ngIf="IsInEditMode(tweet.tweetId)" class="actions ml-4">
+        <button type="reset" class="btn mx-2 cancel" (click)="RemoveFromEditMode(tweet.tweetId)">Cancel</button>
+        <button type="submit" class="btn mx-2 save">Submit</button>
+      </mat-card-actions>
+    </form>
+    <mat-card-actions *ngIf="!IsInEditMode(tweet.tweetId)" class="actions ml-3">
       <app-reply [repliesCount]="tweet.repliesCount" [tweetId]="tweet.tweetId" ></app-reply>
       <app-like-tweet [tweetId]="tweet.tweetId" [likesCount]="tweet.tweetLikesCount" [tweetLikedBy]="tweet.tweetLikedBy"></app-like-tweet>
-      <button class="btn edit"><i class='far fa-edit'></i><span class="px-1">Edit</span></button>
-      <button class="btn delete"><i class='fa fa-trash'></i><span class="px-1">Delete</span></button>
+      <button *ngIf="ShowEditAndDelete(tweet.tweetedBy)" class="btn edit" (click)="SetToEditMode(tweet.tweetId, tweet.tweetText, tweet.tweetTag)"><i class='far fa-edit'></i><span class="px-1">Edit</span></button>
+      <button *ngIf="ShowEditAndDelete(tweet.tweetedBy)" class="btn delete"><i class='fa fa-trash'></i><span class="px-1">Delete</span></button>
     </mat-card-actions>
 </mat-card>
