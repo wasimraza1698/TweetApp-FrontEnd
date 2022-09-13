@@ -1,6 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tweet } from 'src/app/Models/tweet';
+import { TweetRequest } from 'src/app/Models/tweet-request';
+import { TweetAppService } from 'src/app/Services/tweet-app.service';
 
 @Component({
   selector: 'app-view-tweets',
@@ -9,10 +13,84 @@ import { Tweet } from 'src/app/Models/tweet';
 })
 export class ViewTweetsComponent implements OnInit {
   @Input() tweets: Array<Tweet>;
+  editTweet: Array<string>;
+  editFormGroup:FormGroup;
+  isEdited:boolean;
+  tweetEmpty:boolean;
+  message:string;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private formBuilder:FormBuilder, private tweetAppService:TweetAppService) { }
 
   ngOnInit(): void {
+    this.editFormGroup = this.formBuilder.group({
+      tweetText: ['', Validators.required],
+      tweetTag: ['']
+    });
+
+    this.editTweet = [];
+  }
+
+  IsInEditMode(tweetId:string){
+    return this.editTweet.includes(tweetId);
+  }
+
+  ShowEditAndDelete(username:string){
+    let user = localStorage.getItem('username');
+    if (user != null){
+      return user == username;
+    }
+
+    return false;
+  }
+
+  SetToEditMode(tweetId:string, tweetText:string, tweetTag:string){
+    if (this.editTweet.length < 1){
+      this.editFormGroup = this.formBuilder.group({
+        tweetText: [tweetText, Validators.required],
+        tweetTag: [tweetTag]
+      });
+
+      this.editTweet.push(tweetId);
+    }
+  }
+
+  RemoveFromEditMode(tweetId:string){
+    let index = this.editTweet.indexOf(tweetId);
+    if (index !== -1){
+      this.editTweet.splice(index, 1);
+    }
+  }
+
+  get form() {
+    return this.editFormGroup.controls;
+  }
+
+  EditTweet(tweetId:string){
+    this.isEdited = true;
+    if (this.editFormGroup.invalid){
+      this.tweetEmpty = true;
+      return;
+    }
+    else{
+      let tweet = new TweetRequest;
+      tweet.tweetText = this.editFormGroup.value['tweetText'];
+      tweet.tweetTag = this.editFormGroup.value['tweetTag'];
+      this.tweetAppService.edit(tweetId, tweet).subscribe({
+        next: response => {
+          let index = this.tweets.findIndex(t => t.tweetId == tweetId);
+          if (index !== -1){
+            this.tweets[index] = response;
+            this.RemoveFromEditMode(tweetId);
+            alert("tweet updated");
+          }
+        },
+        error: (error : HttpErrorResponse) => {
+          this.message = error.error;
+          alert(this.message);
+          console.log(this.message);
+        }
+      })
+    }
   }
 
   GoToProfile(username:string){

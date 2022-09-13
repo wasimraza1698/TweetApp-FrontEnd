@@ -7,7 +7,7 @@
     </mat-card-header>
     <mat-card-content>
         <form class="form-group" [formGroup]="tweetFormGroup" (ngSubmit)="PostTweet()">
-            <textarea formControlName="tweetText" class="form-control-plaintext m-2 p-2 bg-light" [ngClass]="{'border-danger' : tweetEmpty}" rows="4" placeholder="What's Happening?" maxlength="144"></textarea>
+            <textarea formControlName="tweetText" class="form-control-plaintext m-2 p-2" [ngClass]="{'border-danger' : tweetEmpty}" rows="3" placeholder="What's Happening?" maxlength="144"></textarea>
             <div *ngIf="isPosted && form.tweetText.errors" class="error ml-2 text-danger">
                 <div *ngIf="form.tweetText.errors.required">Tweet text is required to post tweet.</div>
             </div>
