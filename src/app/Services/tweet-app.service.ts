@@ -88,4 +88,9 @@ export class TweetAppService {
     const headers = requestHeaders.header;
     return this.http.get<any>(this.baseurl + username, {headers, responseType: 'json'});
   }
+
+  public getTweet(tweetId:string): Observable<any>{
+    let headers = requestHeaders.header;
+    return this.http.get<any>(this.baseurl + Constants.GET_TWEET + tweetId, {headers, responseType: 'json'});
+  }
 }

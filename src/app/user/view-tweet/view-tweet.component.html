@@ -1,1 +1,64 @@
-<p>view-tweet works!</p>
+<app-navigation></app-navigation>
+<div class="container">
+    <mat-card type="button" class="my-2 tweet">
+        <mat-card-header (click)="GoToProfile(tweet.tweetedByUser.userName)" class="user pt-4 pl-4">
+          <img
+            src="../../../assets/images/twitter_login_page.png"
+            mat-card-avatar>
+          <mat-card-title>{{tweet.tweetedByUser.firstName + " " + tweet.tweetedByUser.lastName}}</mat-card-title>
+          <mat-card-subtitle>
+            @{{tweet.tweetedByUser.userName}} , {{ConvertTime(tweet.tweetedAt)}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content *ngIf="!editTweet" class="pt-3 pl-4">
+          <p>
+            {{tweet.tweetText}}
+          </p>
+          <p class="text-primary">{{tweet.tweetTag}}</p>
+        </mat-card-content>
+        <form class="form-group" [formGroup]="editFormGroup" (ngSubmit)="EditTweet(tweet.tweetId)">
+          <mat-card-content *ngIf="editTweet" class="pt-3 pl-4">
+            <textarea formControlName="tweetText" class="form-control-plaintext m-2 p-2" [ngClass]="{'border-danger' : tweetEmpty}" rows="3" maxlength="144"></textarea>
+            <div *ngIf="isEdited && form.tweetText.errors" class="error ml-2 text-danger">
+                <div *ngIf="form.tweetText.errors.required">Tweet text is required to edit tweet.</div>
+            </div>
+            <input formControlName="tweetTag" type="text" class="form-control m-2 p-2 border-dark bg-light" [value]="tweet.tweetTag" maxlength="50">
+          </mat-card-content>
+          <mat-card-actions *ngIf="editTweet" class="actions ml-4">
+            <button type="reset" class="btn mx-2 cancel" (click)="editTweet=false">Cancel</button>
+            <button type="submit" class="btn mx-2 save">Submit</button>
+          </mat-card-actions>
+        </form>
+        <mat-card-actions *ngIf="!editTweet && !deleteTweet" class="actions ml-3">
+          <app-reply [repliesCount]="tweet.repliesCount" [tweetId]="tweet.tweetId" ></app-reply>
+          <app-like-tweet [tweetId]="tweet.tweetId" [likesCount]="tweet.tweetLikesCount" [tweetLikedBy]="tweet.tweetLikedBy"></app-like-tweet>
+          <button *ngIf="ShowEditAndDelete(tweet.tweetedBy)" class="btn edit" (click)="SetToEditMode()"><i class='far fa-edit'></i><span class="px-1">Edit</span></button>
+          <button *ngIf="ShowEditAndDelete(tweet.tweetedBy)" class="btn delete" (click)="deleteTweet=true"><i class='fa fa-trash'></i><span class="px-1">Delete</span></button>
+        </mat-card-actions>
+        <mat-card-actions *ngIf="deleteTweet" class="actions ml-4">
+          Do you want to delete this tweet?
+          <button class="btn mx-2 save" (click)="deleteTweet=false">Cancel</button>
+          <button class="btn mx-2 cancel" (click)="DeleteTweet(tweet.tweetId)">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<div class="container">
+    <h2 class="ml-4 mb-0">Replies</h2>
+    <mat-card class="mt-2 mx-4 reply" *ngFor="let reply of tweet.replies">
+        <mat-card-header type="button" (click)="GoToProfile(reply.repliedByUser.userName)" class="user pt-4 pl-4">
+          <img
+            src="../../../assets/images/twitter_login_page.png"
+            mat-card-avatar>
+          <mat-card-title>{{reply.repliedByUser.firstName + " " + reply.repliedByUser.lastName}}</mat-card-title>
+          <mat-card-subtitle>
+            @{{reply.repliedByUser.userName}} , {{ConvertTime(reply.repliedAt)}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="pt-3 pl-4">
+          <p>
+            {{reply.replyText}}
+          </p>
+          <p class="text-primary">{{reply.replyTag}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

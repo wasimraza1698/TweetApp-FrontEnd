@@ -10,7 +10,7 @@ import { AllUsersComponent } from './user/all-users/all-users.component';
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'view-tweet/:tweeId', component: ViewTweetComponent },
+    { path: 'view-tweet/:tweetId', component: ViewTweetComponent },
     { path: 'profile/:userName', component: ProfileComponent},
     { path: 'all-users', component:AllUsersComponent},
     { path:'', redirectTo:'login', pathMatch:'full' }
