@@ -14,6 +14,7 @@ import { TweetAppService } from 'src/app/Services/tweet-app.service';
 export class ViewTweetsComponent implements OnInit {
   @Input() tweets: Array<Tweet>;
   editTweet: Array<string>;
+  deleteTweet: Array<string>;
   editFormGroup:FormGroup;
   isEdited:boolean;
   tweetEmpty:boolean;
@@ -28,6 +29,7 @@ export class ViewTweetsComponent implements OnInit {
     });
 
     this.editTweet = [];
+    this.deleteTweet = [];
   }
 
   IsInEditMode(tweetId:string){
@@ -61,6 +63,23 @@ export class ViewTweetsComponent implements OnInit {
     }
   }
 
+  SetToDeleteMode(tweetId:string){
+    if (this.deleteTweet.length < 1){
+      this.deleteTweet.push(tweetId);
+    }
+  }
+
+  RemoveFromDeleteMode(tweetId:string){
+    let index = this.deleteTweet.indexOf(tweetId);
+    if (index !== -1){
+      this.deleteTweet.splice(index, 1);
+    }
+  }
+
+  IsInDeleteMode(tweetId:string){
+    return this.deleteTweet.includes(tweetId);
+  }
+
   get form() {
     return this.editFormGroup.controls;
   }
@@ -91,6 +110,27 @@ export class ViewTweetsComponent implements OnInit {
         }
       })
     }
+  }
+
+  DeleteTweet(tweetId:string)
+  {
+    this.tweetAppService.delete(tweetId).subscribe({
+      next : response => {
+        this.RemoveFromDeleteMode(tweetId);
+        let index = this.tweets.findIndex(t => t.tweetId == tweetId);
+          if (index !== -1){
+            this.tweets.splice(index, 1);
+          }
+        this.message = response;
+        console.log(this.message);
+        alert(this.message);
+      },
+      error: (error : HttpErrorResponse) => {
+        this.message = error.error;
+        alert(this.message);
+        console.log(this.message);
+      }
+    })
   }
 
   GoToProfile(username:string){
