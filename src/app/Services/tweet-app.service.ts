@@ -78,9 +78,14 @@ export class TweetAppService {
     return this.http.put<any>(this.baseurl + username + Constants.EDIT_TWEET + tweetId, tweet, {headers, responseType: 'json'});
   }
 
-  public delete (tweetId:string): Observable<string>{
+  public delete(tweetId:string): Observable<string>{
     let username = localStorage.getItem('username');
     const headers = requestHeaders.headersWithToken;
     return this.http.delete<string>(this.baseurl + username + Constants.DELETE_TWEET + tweetId, {headers, responseType: 'text' as 'json'});
+  }
+
+  public getAllTweetsOfUser(username:string): Observable<any>{
+    const headers = requestHeaders.header;
+    return this.http.get<any>(this.baseurl + username, {headers, responseType: 'json'});
   }
 }
