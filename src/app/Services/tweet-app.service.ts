@@ -55,6 +55,11 @@ export class TweetAppService {
     return this.http.get(this.baseurl + Constants.GET_ALL_TWEEETS, {headers, responseType: 'json'});
   }
 
+  public getAllUsers(): Observable<any>{
+    const headers = requestHeaders.headersWithToken;
+    return this.http.get(this.baseurl + Constants.GET_ALL_USERS, {headers, responseType: 'json'});
+  }
+
   public reply(tweetId: string, reply: ReplyRequest): Observable<string> {
     let username = localStorage.getItem('username');
     const headers = requestHeaders.headersWithToken;

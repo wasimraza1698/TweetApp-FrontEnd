@@ -11,6 +11,7 @@ export class Constants {
     public static readonly SEARCH_USER = 'search/';
     public static readonly POST_TWEET = '/add';
     public static readonly GET_ALL_TWEEETS = 'all';
+    public static readonly GET_ALL_USERS = 'users/all';
     public static readonly REPLY_TO_TWEET = '/reply/'
     public static readonly LIKE_TWEET = '/like/';
     public static readonly EDIT_TWEET = '/update/';
