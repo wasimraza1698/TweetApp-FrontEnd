@@ -13,7 +13,7 @@ export class TrendingComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.users = this.users.slice(0, 3);
+    this.users = this.users.slice(0, 4);
   }
 
   GoToProfile(userName:string) {
