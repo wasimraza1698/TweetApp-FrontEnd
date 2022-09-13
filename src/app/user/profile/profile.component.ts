@@ -39,6 +39,11 @@ export class ProfileComponent implements OnInit {
       next: response => {
         this.users = response;
         this.user = this.users[0];
+      },
+      error: (error : HttpErrorResponse) => {
+        this.message = error.error;
+        alert(this.message);
+        console.log(this.message);
       }
     })
   }
