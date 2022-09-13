@@ -14,4 +14,5 @@ export class Constants {
     public static readonly REPLY_TO_TWEET = '/reply/'
     public static readonly LIKE_TWEET = '/like/';
     public static readonly EDIT_TWEET = '/update/';
+    public static readonly DELETE_TWEET = '/delete/';
 }
