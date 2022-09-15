@@ -13,7 +13,7 @@ import { TweetAppService } from 'src/app/Services/tweet-app.service';
 export class HomeComponent implements OnInit {
   tweets: Array<Tweet>;
   users: Array<User>;
-  message: string;
+  statuscode: number;
 
   constructor(private tweetAppService: TweetAppService) {
     
@@ -31,9 +31,9 @@ export class HomeComponent implements OnInit {
         console.log('tweets retrieved');
       },
       error: (error : HttpErrorResponse) => {
-        this.message = error.error;
-        alert(this.message);
-        console.log(this.message);
+        this.statuscode = error.status;
+        alert(this.statuscode);
+        console.log(this.statuscode);
       }
     })
   }
@@ -45,9 +45,9 @@ export class HomeComponent implements OnInit {
         console.log('users retrieved');
       },
       error: (error : HttpErrorResponse) => {
-        this.message = error.error;
-        alert(this.message);
-        console.log(this.message);
+        this.statuscode = error.status;
+        alert(this.statuscode);
+        console.log(this.statuscode);
       }
     })
   }

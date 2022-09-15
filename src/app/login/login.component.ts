@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   token : Token;
   userForm : FormGroup;
   message : string;
+  statuscode : number;
   showPassword : boolean;
 
   constructor(private formbuilder: FormBuilder, private tweetAppService: TweetAppService, private route: Router) { }
@@ -51,10 +52,10 @@ export class LoginComponent implements OnInit {
         console.log(this.message);
         this.route.navigateByUrl('home');
       },
-      error: (error: HttpErrorResponse) => {
-        this.message = error.error;
-        alert(this.message);
-        console.log(this.message);
+      error: (error : HttpErrorResponse) => {
+        this.statuscode = error.status;
+        alert(this.statuscode);
+        console.log(this.statuscode);
       }
     })
   }

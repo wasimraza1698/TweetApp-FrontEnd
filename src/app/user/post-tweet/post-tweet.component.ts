@@ -14,6 +14,7 @@ export class PostTweetComponent implements OnInit {
   isPosted: boolean;
   message: string;
   tweetEmpty: boolean;
+  statuscode : number;
 
   constructor(private tweetAppService:TweetAppService, private formbuilder:FormBuilder) { }
 
@@ -50,10 +51,9 @@ export class PostTweetComponent implements OnInit {
           window.location.reload();
         },
         error: (error : HttpErrorResponse) => {
-          this.message = error.error;
-          alert(this.message);
-          console.log(this.message);
-          this.Reset();
+          this.statuscode = error.status;
+          alert(this.statuscode);
+          console.log(this.statuscode);
         }
       })
     }

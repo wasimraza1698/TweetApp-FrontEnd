@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   user:User;
   users:Array<User>;
   tweets:Array<Tweet>;
-  message:string;
+  statuscode:number;
   username:string;
 
   constructor(private tweetAppService:TweetAppService, private route:ActivatedRoute,private router:Router) {
@@ -41,9 +41,9 @@ export class ProfileComponent implements OnInit {
         this.user = this.users[0];
       },
       error: (error : HttpErrorResponse) => {
-        this.message = error.error;
-        alert(this.message);
-        console.log(this.message);
+        this.statuscode = error.status;
+        alert(this.statuscode);
+        console.log(this.statuscode);
       }
     })
   }
@@ -55,9 +55,9 @@ export class ProfileComponent implements OnInit {
         console.log('retrieved all tweets of user');
       },
       error: (error : HttpErrorResponse) => {
-        this.message = error.error;
-        alert(this.message);
-        console.log(this.message);
+        this.statuscode = error.status;
+        alert(this.statuscode);
+        console.log(this.statuscode);
       }
     })
   }

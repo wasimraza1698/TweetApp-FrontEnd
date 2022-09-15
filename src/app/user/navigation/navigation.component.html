@@ -24,7 +24,7 @@
         <div class="col-2 dropdown">
             <div *ngIf="displayFullProfile" class="row user-data-section py-1" data-toggle="dropdown">
                 <div class="col-md-3 pl-2">
-                    <img src="../../../assets/images/twitter_login_page.png" class="rounded-circle mt-1" height="42" width="42">
+                    <img src="../../../assets/images/user_image.png" class="rounded-circle mt-1" height="42" width="42">
                 </div>
                 <div class="col-md-7">
                     <div class="row user-info" title="{{user.firstName + ' ' + user.lastName}}">{{user.firstName + " " + user.lastName}}</div>
@@ -36,18 +36,18 @@
             </div>
             <div *ngIf="!displayFullProfile" data-toggle="dropdown">
                 <div class="profile-pic-section">
-                    <img src="../../../assets/images/twitter_login_page.png" class="rounded-circle mt-1" height="42" width="42">
+                    <img src="../../../assets/images/user_image.png" class="rounded-circle mt-1" height="42" width="42">
                 </div>
             </div>
             <div class="dropdown-menu dropdown-menu-left">
                 <div class="dropdown-item" type="button" (click)="GoToProfile()">
                     <div class="row">
                         <div class="col-3 px-0">
-                            <img src="../../../assets/images/twitter_login_page.png" class="rounded-circle mt-1" height="42" width="42">
+                            <img src="../../../assets/images/user_image.png" class="rounded-circle mt-1" height="42" width="42">
                         </div>
-                        <div class="col-9">
-                            <div class="row user-info" title="{{user.firstName + ' ' + user.lastName}}">{{user.firstName + " " + user.lastName}}</div>
-                            <div class="row user-info" title="{{user.userName}}">{{user.userName}}</div>
+                        <div class="col-9 mx-0">
+                            <div class="user-info" title="{{user.firstName + ' ' + user.lastName}}">{{user.firstName + " " + user.lastName}}</div>
+                            <div class="user-info" title="{{user.userName}}">@{{user.userName}}</div>
                         </div>
                     </div>
                 </div>

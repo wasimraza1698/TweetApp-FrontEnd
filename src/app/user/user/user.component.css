@@ -5,3 +5,7 @@
 .user {
     border-top: 1px solid grey;
 }
+
+.name{
+    font-weight: 500;
+}

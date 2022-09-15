@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   passwordsNotMatching : boolean = false;
   userRegistration : UserRequest;
   message : string;
+  statuscode : number;
 
   constructor(private formBuilder : FormBuilder, private tweetAppService : TweetAppService) { }
 
@@ -130,9 +131,9 @@ export class RegisterComponent implements OnInit {
           window.location.reload();
         },
         error: (error : HttpErrorResponse) => {
-          this.message = error.error;
-          alert(this.message);
-          console.log(this.message);
+          this.statuscode = error.status;
+          alert(this.statuscode);
+          console.log(this.statuscode);
         }
       })
     }

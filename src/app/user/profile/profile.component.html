@@ -2,13 +2,13 @@
 <div class="container">
     <div class="row m-1 px-4 pt-4 pb-2">
         <div class="col-2">
-            <img src="../../../assets/images/twitter_login_page.png" class="rounded-circle" width="120" height="120"/>
+            <img src="../../../assets/images/user_image.png" class="rounded-circle" width="120" height="120"/>
         </div>
         <div class="col-10">
             <div class="row display-3">{{user.firstName + " " + user.lastName}}</div>
-            <div class="row display-4">@{{user.userName}}</div>
-            <div class="row display-4">Email: {{user.emailId}}</div>
-            <div class="row display-4">Phone: {{user.contactNumber}}</div>
+            <div class="row display-4 username">@{{user.userName}}</div>
+            <div class="row display-4 email"><b>Email:</b>{{user.emailId}}</div>
+            <div class="row display-4 phone"><b>Phone:</b>{{user.contactNumber}}</div>
         </div>
     </div>
     <app-view-tweets [tweets]="tweets"></app-view-tweets>

@@ -7,6 +7,6 @@
         <app-view-tweets *ngIf="tweets" [tweets]="tweets"></app-view-tweets>
     </div>
     <div class="col-4 trending">
-        <app-trending [users]="users"></app-trending>
+        <app-trending *ngIf="users" [users]="users"></app-trending>
     </div>
 </div>

@@ -16,7 +16,7 @@ export class LikeTweetComponent implements OnInit {
   tweetLiked:boolean;
   username:string;
   tweet:Tweet;
-  message:string;
+  statuscode:number;
 
   constructor(private tweetAppService: TweetAppService) { }
 
@@ -37,9 +37,9 @@ export class LikeTweetComponent implements OnInit {
         this.tweetLiked = this.tweetLikedBy.includes(this.username);
       },
       error: (error : HttpErrorResponse) => {
-        this.message = error.error;
-        alert(this.message);
-        console.log(this.message);
+        this.statuscode = error.status;
+        alert(this.statuscode);
+        console.log(this.statuscode);
       }
     })
   }
