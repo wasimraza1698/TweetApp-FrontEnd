@@ -14,6 +14,7 @@ export class ForgotPasswordComponent implements OnInit {
   resetPasswordRequest : ResetPasswordRequest;
   submitted = false;
   userForm : FormGroup;
+  statuscode : number;
   message : string;
   emailInvalid : boolean = false;
   phonenoInvalid : boolean = false;
@@ -108,10 +109,10 @@ export class ForgotPasswordComponent implements OnInit {
           console.log(this.message);
           window.location.reload()
         },
-        error: (error: HttpErrorResponse) => {
-          this.message = error.error;
-          alert(this.message);
-          console.log(this.message);
+        error: (error : HttpErrorResponse) => {
+          this.statuscode = error.status;
+          alert(this.statuscode);
+          console.log(this.statuscode);
         }
       });
     }

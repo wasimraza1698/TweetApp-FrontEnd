@@ -5,6 +5,7 @@
 .navbar-brand :hover {
     opacity: 0.8;
 }
+
 .user-info {
     display: block;
     white-space: nowrap;

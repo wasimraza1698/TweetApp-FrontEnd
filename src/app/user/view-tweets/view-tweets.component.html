@@ -1,7 +1,7 @@
 <mat-card type="button" class="my-2 bg-light" *ngFor="let tweet of tweets">
     <mat-card-header (click)="GoToProfile(tweet.tweetedByUser.userName)" class="user pt-4 pl-4">
       <img
-        src="../../../assets/images/twitter_login_page.png"
+        src="../../../assets/images/user_image.png"
         mat-card-avatar>
       <mat-card-title>{{tweet.tweetedByUser.firstName + " " + tweet.tweetedByUser.lastName}}</mat-card-title>
       <mat-card-subtitle>

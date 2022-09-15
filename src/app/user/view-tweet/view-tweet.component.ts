@@ -20,6 +20,7 @@ export class ViewTweetComponent implements OnInit {
   isEdited:boolean;
   tweetEmpty:boolean;
   message:string;
+  statuscode : number;
 
   constructor(private tweetAppService: TweetAppService, private route: ActivatedRoute, private router:Router, private formBuilder:FormBuilder) {
     this.route.params.subscribe(params =>{
@@ -73,9 +74,9 @@ export class ViewTweetComponent implements OnInit {
           alert("tweet updated");
         },
         error: (error : HttpErrorResponse) => {
-          this.message = error.error;
-          alert(this.message);
-          console.log(this.message);
+          this.statuscode = error.status;
+          alert(this.statuscode);
+          console.log(this.statuscode);
         }
       })
     }
@@ -92,9 +93,9 @@ export class ViewTweetComponent implements OnInit {
         alert(this.message);
       },
       error: (error : HttpErrorResponse) => {
-        this.message = error.error;
-        alert(this.message);
-        console.log(this.message);
+        this.statuscode = error.status;
+        alert(this.statuscode);
+        console.log(this.statuscode);
       }
     })
   }
@@ -105,9 +106,9 @@ export class ViewTweetComponent implements OnInit {
         this.tweet = response;
       },
       error: (error : HttpErrorResponse) => {
-        this.message = error.error;
-        alert(this.message);
-        console.log(this.message);
+        this.statuscode = error.status;
+        alert(this.statuscode);
+        console.log(this.statuscode);
       }
     })
   }

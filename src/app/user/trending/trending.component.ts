@@ -13,7 +13,9 @@ export class TrendingComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.users = this.users.slice(0, 4);
+    let username = localStorage.getItem('username');
+    let index = this.users.findIndex(u => u.userName == username);
+    this.users.splice(index, 1);
   }
 
   GoToProfile(userName:string) {

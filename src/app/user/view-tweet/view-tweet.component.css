@@ -7,11 +7,11 @@
 }
 
 .user{
-    background-color: rgba(94, 94, 94, 0.056);
+    background-color: lightskyblue;
 }
 
 .user:hover{
-    background-color: aliceblue;
+    background-color: white;
 }
 
 textarea {
@@ -39,4 +39,8 @@ textarea {
     border-color: rgb(6, 186, 6);
     background-color: white;
     color: black;
+}
+
+.reply{
+    background-color:lightcyan;
 }

@@ -7,11 +7,11 @@
 }
 
 .user{
-    background-color: rgba(94, 94, 94, 0.056);
+    background-color:lightskyblue;
 }
 
 .user:hover{
-    background-color: aliceblue;
+    background-color: lightcyan;
 }
 
 textarea {
