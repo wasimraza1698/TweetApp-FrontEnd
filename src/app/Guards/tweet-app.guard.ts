@@ -1,15 +1,28 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TweetAppGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
+
+  constructor(public router:Router){}
   
+  canActivate(): boolean {
+    if (this.IsLoggedIn()) {
+        return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
+}
+  
+  IsLoggedIn():boolean
+    {
+        let token = localStorage.getItem("jwToken");
+        let username = localStorage.getItem("username");
+        if (token == null || username == null)
+            return false;
+        return true;
+
+    }
 }

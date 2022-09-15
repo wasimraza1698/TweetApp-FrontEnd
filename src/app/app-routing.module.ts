@@ -5,14 +5,13 @@ import { HomeComponent } from './user/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ViewTweetComponent } from './user/view-tweet/view-tweet.component';
 import { ProfileComponent } from './user/profile/profile.component';
-import { AllUsersComponent } from './user/all-users/all-users.component';
+import { TweetAppGuard } from './Guards/tweet-app.guard';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'view-tweet/:tweetId', component: ViewTweetComponent },
-    { path: 'profile/:userName', component: ProfileComponent},
-    { path: 'all-users', component:AllUsersComponent},
+    { path: 'home', component: HomeComponent, canActivate:[TweetAppGuard] },
+    { path: 'view-tweet/:tweetId', component: ViewTweetComponent, canActivate:[TweetAppGuard] },
+    { path: 'profile/:userName', component: ProfileComponent, canActivate:[TweetAppGuard]},
     { path:'', redirectTo:'login', pathMatch:'full' }
   ];
   
